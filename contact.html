@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop - Contact</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #111;
+            background: #f5f5f5;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            width: 100%;
+            padding: 18px 5%;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #e9e9e9;
+        }
+
+        .navigation,
+        .contact-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #111;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: #555;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: #111;
+        }
+
+        .nav-button,
+        .submit-button {
+            border: 0;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-button {
+            padding: 10px 17px;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover,
+        .submit-button:hover {
+            background: #333;
+        }
+
+        .contact-shell {
+            padding: 70px 5% 80px;
+        }
+
+        .contact-intro {
+            max-width: 680px;
+            margin-bottom: 42px;
+        }
+
+        .eyebrow {
+            margin-bottom: 18px;
+            color: #666;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin-bottom: 18px;
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.04;
+        }
+
+        .contact-intro>p:last-child {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            align-items: start;
+            gap: 28px;
+        }
+
+        .contact-form,
+        .contact-info {
+            padding: 28px;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .contact-form h2,
+        .contact-info h2 {
+            margin-bottom: 22px;
+            font-size: 21px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            color: #111;
+            background: white;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #555;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 13px;
+            font-size: 15px;
+        }
+
+        .info-block {
+            padding: 18px 0;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .info-block:first-of-type {
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .info-block h3 {
+            margin-bottom: 7px;
+            font-size: 15px;
+        }
+
+        .info-block p,
+        .info-block a {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .info-block a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        .info-block a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            .site-header {
+                padding: 16px 5%;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .contact-shell {
+                padding: 52px 5% 60px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navigation" aria-label="Main navigation">
+            <a class="logo" href="index.html">Loop</a>
+            <div class="nav-actions">
+                <a class="nav-link" href="index.html">Explore</a>
+                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-button" href="register.html">Get started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contact-shell">
+        <section class="contact-intro" aria-labelledby="contact-title">
+            <p class="eyebrow">Contact Loop</p>
+            <h1 id="contact-title">We are here to listen.</h1>
+            <p>Have a question, found something that needs attention, or have an idea for Loop? Send us a note and our
+                team will get back to you.</p>
+        </section>
+
+        <div class="contact-grid">
+            <form class="contact-form" action="#" method="post">
+                <h2>Send a message</h2>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="topic">What can we help with?</label>
+                    <select id="topic" name="topic">
+                        <option>General question</option>
+                        <option>Report a problem</option>
+                        <option>Creator support</option>
+                        <option>Share feedback</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us a little more..." required></textarea>
+                </div>
+                <button class="submit-button" type="submit">Send message</button>
+            </form>
+
+            <aside class="contact-info" aria-labelledby="help-title">
+                <h2 id="help-title">Helpful places</h2>
+                <div class="info-block">
+                    <h3>General support</h3>
+                    <p>Questions about your account or getting started? We can help.</p>
+                    <a href="mailto:hello@loop.example">hello@loop.example</a>
+                </div>
+                <div class="info-block">
+                    <h3>Safety and reports</h3>
+                    <p>Use the message form to report content or an experience that does not feel right.</p>
+                </div>
+                <div class="info-block">
+                    <h3>Creator ideas</h3>
+                    <p>Tell us what would make sharing your next loop easier and more enjoyable.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+</body>
+
+</html>

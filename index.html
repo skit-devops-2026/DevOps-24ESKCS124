@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop - Short Videos</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #111;
+            background: #f5f5f5;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            width: 100%;
+            padding: 18px 5%;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #e9e9e9;
+        }
+
+        .navigation,
+        .feed-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #111;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-actions,
+        .profile-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: #555;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: #111;
+        }
+
+        .nav-button,
+        .follow-button {
+            padding: 10px 17px;
+            border-radius: 6px;
+            background: #111;
+            color: white;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .nav-button:hover,
+        .follow-button:hover {
+            background: #333;
+        }
+
+        .feed-shell {
+            padding: 34px 5% 60px;
+        }
+
+        .feed-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .feed-heading h1 {
+            margin-bottom: 7px;
+            font-size: 32px;
+        }
+
+        .feed-heading p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .product-description {
+            max-width: 620px;
+            margin-top: 12px;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .upload-link {
+            color: #111;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .topics {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 26px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .topics::-webkit-scrollbar {
+            display: none;
+        }
+
+        .topic {
+            flex: 0 0 auto;
+            padding: 9px 15px;
+            border: 1px solid #d5d5d5;
+            border-radius: 20px;
+            color: #555;
+            background: white;
+            font-size: 14px;
+        }
+
+        .topic.active {
+            border-color: #111;
+            background: #111;
+            color: white;
+        }
+
+        .feed-grid {
+            display: grid;
+            grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+            align-items: start;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .reel-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 9 / 16;
+            max-height: 650px;
+            border-radius: 12px;
+            background: #111;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.14);
+        }
+
+        .reel-card::before {
+            content: "";
+            position: absolute;
+            top: 11%;
+            right: -18%;
+            width: 78%;
+            height: 35%;
+            border: 1px solid #3a3a3a;
+            border-radius: 50%;
+            transform: rotate(-28deg);
+        }
+
+        .reel-card::after {
+            content: "";
+            position: absolute;
+            bottom: 18%;
+            left: -28%;
+            width: 90%;
+            height: 28%;
+            border: 1px solid #303030;
+            border-radius: 50%;
+            transform: rotate(20deg);
+        }
+
+        .reel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            width: 66px;
+            height: 66px;
+            border: 1px solid #555;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            transform: translate(-50%, -50%);
+        }
+
+        .reel-center span {
+            margin-left: 4px;
+        }
+
+        .reel-top,
+        .reel-details,
+        .reel-actions {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .reel-top {
+            top: 20px;
+            right: 18px;
+            left: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            font-size: 13px;
+        }
+
+        .reel-top span {
+            padding: 6px 9px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            color: #ccc;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .reel-details {
+            right: 58px;
+            bottom: 22px;
+            left: 18px;
+            color: white;
+        }
+
+        .reel-details h2 {
+            margin-bottom: 7px;
+            font-size: 16px;
+        }
+
+        .reel-details p {
+            color: #bbb;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .reel-actions {
+            right: 14px;
+            bottom: 20px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .action-button {
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border: 0;
+            border-radius: 50%;
+            color: white;
+            background: #292929;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background: #444;
+        }
+
+        .discover {
+            min-width: 0;
+            padding-top: 2px;
+        }
+
+        .discover h2 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .preview-list {
+            display: grid;
+            gap: 13px;
+        }
+
+        .preview {
+            display: grid;
+            grid-template-columns: 90px minmax(0, 1fr);
+            align-items: center;
+            gap: 14px;
+            padding: 10px;
+            border: 1px solid #e2e2e2;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .preview-image {
+            display: grid;
+            position: relative;
+            place-items: center;
+            aspect-ratio: 9 / 12;
+            overflow: hidden;
+            border-radius: 5px;
+            color: #aaa;
+            background: #222;
+            font-size: 18px;
+        }
+
+        .preview-image::after {
+            content: "";
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 1px solid #444;
+            border-radius: 50%;
+        }
+
+        .preview-copy h3 {
+            margin-bottom: 6px;
+            font-size: 14px;
+            line-height: 1.35;
+        }
+
+        .preview-copy p {
+            color: #777;
+            font-size: 12px;
+        }
+
+        .profile-row {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 18px;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .avatar {
+            display: grid;
+            place-items: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            color: white;
+            background: #111;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .about-loop {
+            margin-top: 24px;
+            padding-top: 22px;
+            border-top: 1px solid #ddd;
+        }
+
+        .about-loop h2 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .about-loop p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 760px) {
+            .site-header {
+                padding: 16px 5%;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .feed-shell {
+                padding: 28px 5% 44px;
+            }
+
+            .feed-heading {
+                align-items: start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .feed-heading h1 {
+                font-size: 28px;
+            }
+
+            .feed-grid {
+                grid-template-columns: minmax(240px, 360px);
+                justify-content: center;
+            }
+
+            .discover {
+                display: none;
+            }
+
+            .reel-card {
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .nav-button {
+                padding: 9px 13px;
+                font-size: 14px;
+            }
+
+            .feed-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navigation" aria-label="Main navigation">
+            <a class="logo" href="index.html">Loop</a>
+            <div class="nav-actions">
+                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="login.html">Log in</a>
+                <a class="nav-button" href="register.html">Get started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="feed-shell">
+        <div class="feed-heading">
+            <div>
+                <h1>For you</h1>
+                <p>Short videos. Fresh ideas. Your next loop.</p>
+                <p class="product-description">Loop is a place to discover quick stories, share your creativity, and
+                    find people who see the world the way you do. Watch something new, join the conversation, and make a
+                    moment worth repeating.</p>
+            </div>
+            <a class="upload-link" href="register.html">+ Create a loop</a>
+        </div>
+
+        <nav class="topics" aria-label="Video topics">
+            <span class="topic active">For you</span>
+            <span class="topic">Following</span>
+            <span class="topic">Trending</span>
+            <span class="topic">Music</span>
+            <span class="topic">Comedy</span>
+            <span class="topic">Sport</span>
+        </nav>
+
+        <div class="feed-grid">
+            <article class="reel-card" aria-label="Featured short video placeholder">
+                <!-- Replace the reel card background with a video element when media is available. -->
+                <div class="reel-center" aria-hidden="true"><span>▶</span></div>
+                <div class="reel-top">
+                    <span>Featured</span>
+                    <strong>1 / 6</strong>
+                </div>
+                <div class="reel-details">
+                    <h2>Something new is always looping</h2>
+                    <p>A place for quick stories, creative sparks, and the people behind them.</p>
+                    <div class="profile-row"><span class="avatar">L</span> Loop community</div>
+                </div>
+                <div class="reel-actions" aria-label="Video actions">
+                    <button class="action-button" type="button" aria-label="Like video">&#9825;</button>
+                    <button class="action-button" type="button" aria-label="Comment on video">&#9993;</button>
+                    <button class="action-button" type="button" aria-label="Share video">&#8599;</button>
+                </div>
+            </article>
+
+            <aside class="discover" aria-labelledby="discover-title">
+                <h2 id="discover-title">Discover more</h2>
+                <div class="preview-list">
+                    <article class="preview">
+                        <div class="preview-image" aria-hidden="true">▶</div>
+                        <div class="preview-copy">
+                            <h3>Small moments, big energy</h3>
+                            <p>2.4k views</p>
+                        </div>
+                    </article>
+                    <article class="preview">
+                        <div class="preview-image" aria-hidden="true">▶</div>
+                        <div class="preview-copy">
+                            <h3>Make room for your next idea</h3>
+                            <p>1.8k views</p>
+                        </div>
+                    </article>
+                    <article class="preview">
+                        <div class="preview-image" aria-hidden="true">▶</div>
+                        <div class="preview-copy">
+                            <h3>What is on your loop today?</h3>
+                            <p>986 views</p>
+                        </div>
+                    </article>
+                </div>
+                <section class="about-loop" aria-labelledby="about-title">
+                    <h2 id="about-title">What is Loop?</h2>
+                    <p>A simple home for short-form video where every creator has a chance to be seen and every viewer
+                        can find something that feels personal.</p>
+                </section>
+            </aside>
+        </div>
+    </main>
+</body>
+
+</html>
