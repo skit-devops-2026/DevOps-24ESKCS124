@@ -59,3 +59,15 @@ The pages can also be served using any local static HTTP server.
 ## Development
 
 The project is currently implemented as a static frontend. DevOps tooling is being added to automate testing, continuous integration, packaging, and deployment as part of the project development process.
+
+## Testing
+
+Run the automated tests locally with:
+
+```bash
+python -m unittest discover -s tests -v
+
+Then run the tests once:
+
+```powershell
+python -m unittest discover -s tests -v
