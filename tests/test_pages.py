@@ -48,6 +48,15 @@ class TestLoopPages(unittest.TestCase):
                 content,
                 f"Missing navigation link to {page}"
             )
+    def test_navigation_pages_have_home_link(self):
+        for page in ["about.html", "contact.html", "login.html", "register.html"]:
+            content = (ROOT / page).read_text(encoding="utf-8")
+
+            self.assertIn(
+                'href="index.html"',
+                content,
+                f"{page} is missing a link to the home page"
+            )
 
 
 if __name__ == "__main__":
