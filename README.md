@@ -71,3 +71,20 @@ Then run the tests once:
 
 ```powershell
 python -m unittest discover -s tests -v
+
+## Project Structure
+
+```text
+DevOps-24ESKCS124/
+├── index.html
+├── about.html
+├── contact.html
+├── login.html
+├── register.html
+├── tests/
+│   └── test_pages.py
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── README.md
+└── .gitignore
