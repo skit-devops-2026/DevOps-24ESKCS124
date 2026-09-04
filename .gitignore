@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / editor files
+.vscode/
+.idea/
+
+# Node.js dependencies and build output
+node_modules/
+dist/
+build/
+
+# Python virtual environments and cache
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Environment files / secrets
+.env
+.env.*
+!.env.example
