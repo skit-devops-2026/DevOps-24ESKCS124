@@ -67,13 +67,6 @@ Run the automated tests locally with:
 ```bash
 python -m unittest discover -s tests -v
 
-Then run the tests once:
-
-```powershell
-python -m unittest discover -s tests -v
-
-## Project Structure
-
 ```text
 DevOps-24ESKCS124/
 ├── index.html
@@ -88,3 +81,14 @@ DevOps-24ESKCS124/
 │       └── ci.yml
 ├── README.md
 └── .gitignore
+
+## Continuous Integration
+
+Every push to the `main` branch and feature branches triggers the GitHub Actions CI workflow. Pull requests targeting `main` also trigger CI.
+
+The workflow checks out the repository, sets up Python, and runs the automated tests with:
+
+```bash
+python -m unittest discover -s tests -v
+
+
