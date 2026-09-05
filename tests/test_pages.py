@@ -57,6 +57,23 @@ class TestLoopPages(unittest.TestCase):
                 content,
                 f"{page} is missing a link to the home page"
             )
+    def test_pages_have_expected_titles(self):
+        expected_titles = {
+            "index.html": "Loop - Short Videos",
+            "about.html": "Loop - About",
+            "contact.html": "Loop - Contact",
+            "login.html": "Loop - Login",
+            "register.html": "Loop - Register",
+        }
+
+        for page, title in expected_titles.items():
+            content = (ROOT / page).read_text(encoding="utf-8")
+
+            self.assertIn(
+                f"<title>{title}</title>",
+                content,
+                f"{page} has an unexpected title"
+            )            
 
 
 if __name__ == "__main__":
