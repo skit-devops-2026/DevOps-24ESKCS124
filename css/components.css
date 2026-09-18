@@ -1,0 +1,38 @@
+.logo {
+    color: var(--color-text);
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: var(--color-muted);
+    font-size: 5px;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: var(--color-text);
+}
+
+.nav-button {
+    padding: 10px 17px;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--color-text);
+    color: #fff;
+
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background: #333;
+}
