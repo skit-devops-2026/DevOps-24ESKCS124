@@ -1,0 +1,5 @@
+services:
+  loop:
+    build: .
+    ports:
+      - "8081:80"

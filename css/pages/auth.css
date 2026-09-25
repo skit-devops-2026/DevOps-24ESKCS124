@@ -1,0 +1,106 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container,
+.register-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.logo a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.subtitle {
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--color-muted);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 11px;
+
+    border: 1px solid #ccc;
+    border-radius: var(--radius-sm);
+
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: var(--radius-sm);
+
+    background: var(--color-text);
+    color: #fff;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+.register-link,
+.login-link {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--color-muted);
+}
+
+.register-link a,
+.login-link a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: -8px;
+    margin-bottom: 20px;
+
+    text-align: right;
+
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    color: var(--color-text);
+}

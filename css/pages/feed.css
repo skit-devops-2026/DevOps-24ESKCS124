@@ -1,0 +1,300 @@
+.feed-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+    align-items: start;
+    justify-content: center;
+    gap: 28px;
+}
+
+.reel-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    max-height: 650px;
+
+    border-radius: var(--radius-lg);
+    background: var(--color-text);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.14);
+}
+
+.reel-card::before {
+    content: "";
+
+    position: absolute;
+    top: 11%;
+    right: -18%;
+
+    width: 78%;
+    height: 35%;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 50%;
+    transform: rotate(-28deg);
+}
+
+.reel-card::after {
+    content: "";
+
+    position: absolute;
+    bottom: 18%;
+    left: -28%;
+
+    width: 90%;
+    height: 28%;
+
+    border: 1px solid #303030;
+    border-radius: 50%;
+
+    transform: rotate(20deg);
+}
+
+.reel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+
+    display: grid;
+    place-items: center;
+
+    width: 66px;
+    height: 66px;
+
+    margin-left: 4px;
+
+    border: 1px solid #555;
+    border-radius: 50%;
+
+    color: white;
+    font-size: 24px;
+
+    transform: translate(-50%, -50%);
+}
+
+.reel-top,
+.reel-details,
+.reel-actions {
+    position: absolute;
+    z-index: 2;
+}
+
+.reel-top {
+    top: 20px;
+    right: 18px;
+    left: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: white;
+    font-size: 13px;
+}
+
+.reel-top span {
+    padding: 6px 9px;
+
+    border: 1px solid #555;
+    border-radius: 4px;
+
+    color: #ccc;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.reel-details {
+    right: 58px;
+    bottom: 22px;
+    left: 18px;
+
+    color: white;
+}
+
+.reel-details h2 {
+    margin-bottom: 7px;
+    font-size: 16px;
+}
+
+.reel-details p {
+    color: #bbb;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.reel-actions {
+    right: 14px;
+    bottom: 20px;
+
+    display: grid;
+    gap: 16px;
+}
+
+.action-button {
+    display: grid;
+    place-items: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: 0;
+    border-radius: 50%;
+
+    color: white;
+    background: #292929;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background: #444;
+}
+
+.discover {
+    min-width: 0;
+    padding-top: 2px;
+}
+
+.discover h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.preview-list {
+    display: grid;
+    gap: 13px;
+}
+
+.preview {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+
+    padding: 10px;
+
+    border: 1px solid #e2e2e2;
+    border-radius: var(--radius-md);
+
+    background: var(--color-surface);
+}
+
+.preview-image {
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    aspect-ratio: 9 / 12;
+    overflow: hidden;
+
+    border-radius: 5px;
+
+    color: #aaa;
+    background: #222;
+
+    font-size: 18px;
+}
+
+.preview-image::after {
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    border: 1px solid #444;
+    border-radius: 50%;
+}
+
+.preview-copy h3 {
+    margin-bottom: 6px;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.preview-copy p {
+    color: #777;
+    font-size: 12px;
+}
+
+.profile-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 18px;
+
+    color: var(--color-muted);
+    font-size: 13px;
+}
+
+.avatar {
+    display: grid;
+    place-items: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    color: white;
+    background: var(--color-text);
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.about-loop {
+    margin-top: 24px;
+    padding-top: 22px;
+
+    border-top: 1px solid #ddd;
+}
+
+.about-loop h2 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.about-loop p {
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+    .feed-shell {
+        padding: 28px 5% 44px;
+    }
+
+    .feed-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .feed-heading h1 {
+        font-size: 28px;
+    }
+
+    .feed-grid {
+        grid-template-columns: minmax(240px, 360px);
+        justify-content: center;
+    }
+
+    .discover {
+        display: none;
+    }
+
+    .reel-card {
+        max-height: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .feed-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
