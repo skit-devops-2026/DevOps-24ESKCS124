@@ -1,94 +1,19 @@
-# Loop
+# React + Vite
 
-Loop is a short-form video community web application focused on discovering quick stories, sharing creativity, and connecting viewers with creators.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
+Currently, two official plugins are available:
 
-* Short-form video discovery interface
-* Topic-based browsing categories
-* Featured video section
-* Creator and community information
-* User registration page
-* User login page
-* Contact and support page
-* Responsive layout for desktop and mobile screens
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Project Structure
+## React Compiler
 
-```text
-Loop/
-├── index.html
-├── about.html
-├── contact.html
-├── login.html
-└── register.html
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Technologies Used
+## Expanding the ESLint configuration
 
-* HTML5
-* CSS3
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
-The current version is a static frontend implementation.
-
-## Running the Project
-
-No build tools or external dependencies are required.
-
-Clone the repository and open `index.html` in a web browser:
-
-```bash
-git clone <repository-url>
-cd DevOps-24ESKCS124
-```
-
-Then open `index.html` in a browser.
-
-The pages can also be served using any local static HTTP server.
-
-## Pages
-
-| Page            | Description                             |
-| --------------- | --------------------------------------- |
-| `index.html`    | Main Loop feed and video discovery page |
-| `about.html`    | Information about Loop                  |
-| `contact.html`  | Contact and support page                |
-| `login.html`    | User login interface                    |
-| `register.html` | User registration interface             |
-
-## Development
-
-The project is currently implemented as a static frontend. DevOps tooling is being added to automate testing, continuous integration, packaging, and deployment as part of the project development process.
-
-## Testing
-
-Run the automated tests locally with:
-
-```bash
-python -m unittest discover -s tests -v
-
-```text
-DevOps-24ESKCS124/
-├── index.html
-├── about.html
-├── contact.html
-├── login.html
-├── register.html
-├── tests/
-│   └── test_pages.py
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── README.md
-└── .gitignore
-
-## Continuous Integration
-
-Every push to the `main` branch and feature branches triggers the GitHub Actions CI workflow. Pull requests targeting `main` also trigger CI.
-
-The workflow checks out the repository, sets up Python, and runs the automated tests with:
-
-```bash
-python -m unittest discover -s tests -v
-
-
+## Live Deployment
+- **Local Docker URL:** `http://localhost:5173` (Port 5173)

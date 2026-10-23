@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-react-deployment
+  labels:
+    app: devops-react
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-react
+  template:
+    metadata:
+      labels:
+        app: devops-react
+    spec:
+      containers:
+      - name: react-app
+        image: loop-react-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80q

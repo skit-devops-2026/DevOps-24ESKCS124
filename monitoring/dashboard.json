@@ -1,0 +1,42 @@
+{
+    "annotations": {
+        "list": []
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": null,
+    "title": "DevOps React App Monitoring Dashboard",
+    "tags": [
+        "devops",
+        "react",
+        "nginx"
+    ],
+    "timezone": "browser",
+    "panels": [
+        {
+            "id": 1,
+            "title": "Application Uptime & Status",
+            "type": "stat",
+            "targets": [
+                {
+                    "expr": "up{job=\"devops-react-app\"}",
+                    "refId": "A"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "HTTP Requests Total",
+            "type": "timeseries",
+            "targets": [
+                {
+                    "expr": "rate(http_requests_total[5m])",
+                    "refId": "B"
+                }
+            ]
+        }
+    ],
+    "schemaVersion": 38,
+    "version": 1
+}
